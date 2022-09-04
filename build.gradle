@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+}
+
+group = 'me.temez'
+version = '0.2'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'jiptack'
+        url 'https://jitpack.io'
+    }
+
+}
+
+configurations {
+    packToJar
+}
+
+dependencies {
+    compileOnly 'io.github.waterfallmc:waterfall-api:1.16-R0.5-SNAPSHOT'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'com.samjakob:SpiGUI:1.2.3'
+    packToJar 'com.samjakob:SpiGUI:1.2.3'
+}
+
+tasks.with {
+    withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.compilerArgs << '-Xlint:none'
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+jar {
+    from {
+        configurations.packToJar.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
