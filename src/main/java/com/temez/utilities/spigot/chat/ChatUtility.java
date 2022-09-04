@@ -1,12 +1,8 @@
-package me.temez.utilities.spigot.chat;
+package com.temez.utilities.spigot.chat;
 
 import lombok.RequiredArgsConstructor;
-import me.temez.utilities.shared.TextUtility;
-import net.md_5.bungee.api.ChatColor;
-import org.apache.commons.lang.StringUtils;
+import com.temez.utilities.shared.TextUtility;
 import org.bukkit.entity.Player;
-
-import java.util.Collection;
 
 /**
  * @author temez

@@ -1,4 +1,4 @@
-package me.temez.utilities.spigot.bungee;
+package com.temez.utilities.spigot.bungee;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

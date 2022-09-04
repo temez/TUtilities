@@ -1,4 +1,4 @@
-package me.temez.utilities.shared.configuration;
+package com.temez.utilities.shared.configuration;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

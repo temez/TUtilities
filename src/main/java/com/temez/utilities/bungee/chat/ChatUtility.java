@@ -1,7 +1,7 @@
-package me.temez.utilities.bungee.chat;
+package com.temez.utilities.bungee.chat;
 
 import lombok.RequiredArgsConstructor;
-import me.temez.utilities.shared.TextUtility;
+import com.temez.utilities.shared.TextUtility;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
@@ -10,7 +10,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
  * @since 0.1
  */
 @RequiredArgsConstructor
-public class BungeeChatUtility {
+public class ChatUtility {
     private final String prefix;
 
     /**

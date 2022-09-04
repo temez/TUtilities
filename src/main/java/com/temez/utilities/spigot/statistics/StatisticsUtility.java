@@ -1,4 +1,4 @@
-package me.temez.utilities.spigot.statistics;
+package com.temez.utilities.spigot.statistics;
 
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;

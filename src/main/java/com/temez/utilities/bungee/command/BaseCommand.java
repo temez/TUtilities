@@ -1,9 +1,8 @@
-package me.temez.utilities.bungee.command;
+package com.temez.utilities.bungee.command;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-import me.temez.utilities.bungee.chat.BungeeChatUtility;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;

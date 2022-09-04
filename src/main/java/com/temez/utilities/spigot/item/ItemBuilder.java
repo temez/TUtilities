@@ -1,10 +1,10 @@
-package me.temez.utilities.spigot.item;
+package com.temez.utilities.spigot.item;
 
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import me.temez.utilities.shared.TextUtility;
+import com.temez.utilities.shared.TextUtility;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;

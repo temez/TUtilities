@@ -1,4 +1,4 @@
-package me.temez.utilities.shared.mysql;
+package com.temez.utilities.shared.mysql;
 
 
 import com.google.common.base.Preconditions;

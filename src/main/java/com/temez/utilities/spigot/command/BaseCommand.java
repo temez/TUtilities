@@ -1,4 +1,4 @@
-package me.temez.utilities.spigot.command;
+package com.temez.utilities.spigot.command;
 
 
 import org.bukkit.command.Command;

@@ -1,4 +1,4 @@
-package me.temez.utilities.spigot.item;
+package com.temez.utilities.spigot.item;
 
 
 import com.google.gson.*;
