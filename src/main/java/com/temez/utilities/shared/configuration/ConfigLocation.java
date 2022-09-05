@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author temez
@@ -32,9 +33,11 @@ public class ConfigLocation implements Cloneable {
      * Получает ConfigLocation из секции
      *
      * @param section секция
+     * @since 0.1
      */
     public static ConfigLocation parse(ConfigurationSection section) {
         if (section == null) return null;
+        ItemStack itemStack;
         return new ConfigLocation(section.getInt("x", 0),
                 section.getInt("y", 0),
                 section.getInt("z", 0),
@@ -45,9 +48,26 @@ public class ConfigLocation implements Cloneable {
     }
 
     /**
+     * Сохраняет ConfigLocation в секцию конфига
+     *
+     * @param section секция
+     * @since 0.1.1
+     */
+    public void save(ConfigurationSection section) {
+        if (section == null) return;
+        section.set("x", x);
+        section.set("y", y);
+        section.set("z", z);
+        section.set("world", world);
+        section.set("yaw", yaw);
+        section.set("pitch", pitch);
+    }
+
+    /**
      * Получает ConfigLocation из Location
      *
      * @param location локация
+     * @since 0.1
      */
     public static ConfigLocation fromBukkitLocation(Location location) {
         return new ConfigLocation(location.getBlockX(), location.getBlockY(), location.getBlockZ(), location.getWorld().getName(), location.getYaw(), location.getPitch());
@@ -55,6 +75,8 @@ public class ConfigLocation implements Cloneable {
 
     /**
      * Конвертирует обьект в Location
+     *
+     * @since 0.1
      */
     public Location getBukkitLocation() {
         if (Bukkit.getWorld(world) == null) return null;
@@ -63,6 +85,8 @@ public class ConfigLocation implements Cloneable {
 
     /**
      * Клонирует ConfigLocation
+     *
+     * @since 0.1
      */
     @Override
     public ConfigLocation clone() {

@@ -22,7 +22,6 @@ import java.util.List;
 public abstract class BaseCommand<T extends Plugin> extends Command {
 
     final T proxy;
-    final List<String> availableServers = new ArrayList<>();
     boolean canBeUsedFromConsole = true;
 
     public BaseCommand(String cmd, T proxy) {
@@ -38,7 +37,7 @@ public abstract class BaseCommand<T extends Plugin> extends Command {
     /**
      * Регистрирует команду на прокси
      */
-    private void register() {
+    protected void register() {
         proxy.getProxy().getPluginManager().registerCommand(proxy, this);
     }
 
@@ -62,15 +61,6 @@ public abstract class BaseCommand<T extends Plugin> extends Command {
      */
     protected void unavailableFromConsole() {
         this.canBeUsedFromConsole = false;
-    }
-
-    /**
-     * Задаёт серверы, на которых может быть использована команда
-     *
-     * @param servers список серверов
-     */
-    protected void setAvailableServers(String... servers) {
-        this.availableServers.addAll(Arrays.stream(servers).toList());
     }
 
     /**
