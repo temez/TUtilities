@@ -38,7 +38,7 @@ public class TextUtility {
      * @return окрашеный список
      * @since 0.1
      */
-    public static List<String> colorize(Collection<String> lines) {
+    public List<String> colorize(Collection<String> lines) {
         List<String> coloredLines = new ArrayList<>();
         for (String line : lines) {
             coloredLines.add(colorize(line));
@@ -52,7 +52,7 @@ public class TextUtility {
      * @param message сообщение
      * @since 0.1
      */
-    public static String uncolorize(String message) {
+    public String uncolorize(String message) {
         return message == null ? null : ChatColor.stripColor(colorize(message));
     }
 
@@ -63,7 +63,7 @@ public class TextUtility {
      * @return список сообщений
      * @since 0.1
      */
-    public static List<String> uncolorize(Collection<String> lines) {
+    public List<String> uncolorize(Collection<String> lines) {
         List<String> uncoloredLines = new ArrayList<>();
         for (String line : lines) {
             uncoloredLines.add(uncolorize(line));
@@ -79,7 +79,7 @@ public class TextUtility {
      * @since 0.1
      */
     @SneakyThrows(ArrayIndexOutOfBoundsException.class)
-    public static String translateColorCodes(String text) {
+    public String translateColorCodes(String text) {
         String[] texts = text.split(String.format("((?<=%1$s)|(?=%1$s))", "&"));
         StringBuilder finalText = new StringBuilder();
         for (int i = 0; i < texts.length; i++) {
@@ -103,7 +103,7 @@ public class TextUtility {
      * @param message сообщение
      * @since 0.1
      */
-    public static String getMultilineMessage(Collection<String> message) {
+    public String getMultilineMessage(Collection<String> message) {
         StringBuilder builder = new StringBuilder();
         boolean firstLine = true;
         for (String line : message) {
@@ -126,7 +126,7 @@ public class TextUtility {
      * @param message сообщение
      * @since 0.1
      */
-    public static String getCenteredColoredMessage(String message) {
+    public String getCenteredColoredMessage(String message) {
         int maxWidth = 80, spaces = (int) Math.round((maxWidth - 1.4 * ChatColor.stripColor(TextUtility.colorize(message)).length()) / 2);
         return StringUtils.repeat(" ", spaces) + TextUtility.colorize(message);
     }

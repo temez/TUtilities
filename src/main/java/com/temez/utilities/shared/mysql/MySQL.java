@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
 import java.sql.*;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -81,6 +82,8 @@ public class MySQL {
                 p.setDouble(i + 1, (Double) obj);
             } else if (obj instanceof Long) {
                 p.setLong(i + 1, (Long) obj);
+            } else if (obj instanceof UUID) {
+                p.setString(i + 1, obj.toString());
             }
         }
     }
