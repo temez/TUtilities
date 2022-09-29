@@ -1,4 +1,4 @@
-package com.temez.utilities.shared;
+package dev.temez.utilities.shared;
 
 
 import lombok.SneakyThrows;

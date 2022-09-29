@@ -1,4 +1,4 @@
-package com.temez.utilities.spigot.bungee;
+package dev.temez.utilities.spigot.bungee;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -12,6 +12,7 @@ import java.io.DataOutputStream;
 
 /**
  * @author temez
+ * @since 0.1
  */
 @RequiredArgsConstructor
 public class BungeeUtility implements PluginMessageListener {
@@ -19,6 +20,8 @@ public class BungeeUtility implements PluginMessageListener {
 
     /**
      * Регистрирует каналы для отправки сообщений
+     *
+     * @since 0.1
      */
     public void enable() {
         plugin.getServer().getMessenger().registerOutgoingPluginChannel(plugin, "BungeeCord");
@@ -28,6 +31,8 @@ public class BungeeUtility implements PluginMessageListener {
     /**
      * Отменяет регистрацию каналов
      * Делайте это, для избежания перегрузок
+     *
+     * @since 0.1
      */
     public void disable() {
         plugin.getServer().getMessenger().unregisterOutgoingPluginChannel(plugin);
@@ -39,6 +44,7 @@ public class BungeeUtility implements PluginMessageListener {
      *
      * @param p      обьект игрока
      * @param server сервер
+     * @since 0.1
      */
     @SneakyThrows
     public void sendToServer(Player p, String server) {
