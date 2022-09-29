@@ -1,7 +1,7 @@
-package com.temez.utilities.spigot.chat;
+package dev.temez.utilities.spigot.chat;
 
+import dev.temez.utilities.shared.TextUtility;
 import lombok.RequiredArgsConstructor;
-import com.temez.utilities.shared.TextUtility;
 import org.bukkit.entity.Player;
 
 /**
@@ -33,5 +33,28 @@ public class ChatUtility {
      */
     public void sendColoredMessage(Player player, String message) {
         player.sendMessage(TextUtility.colorize(message));
+    }
+
+    /**
+     * Отправляет ошибку с префиксом игроку
+     *
+     * @param player  обьект игрока
+     * @param message сообщение
+     * @since 0.1.1
+     */
+    public void sendPrefixedError(Player player, String message){
+        sendPrefixedMessage(player, "&#fcb1a7" + message);
+    }
+
+    /**
+     * Отправляет цветной тайтл игроку
+     *
+     * @param player  обьект игрока
+     * @param upper верхняя строка
+     * @param lower нижняя строка
+     * @since 0.1.1
+     */
+    public void sendColoredTitle(Player player, String upper, String lower){
+        player.sendTitle(TextUtility.colorize(upper), TextUtility.colorize(lower));
     }
 }
