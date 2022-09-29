@@ -1,4 +1,4 @@
-package com.temez.utilities.bungee.command;
+package dev.temez.utilities.bungee.command;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,8 +43,8 @@ public abstract class BaseCommand<T extends Plugin> extends Command {
     /**
      * Стандартная обработка команды
      *
-     * @param sender the executor of this command
-     * @param args   arguments used to invoke this command
+     * @param sender отправитель
+     * @param args   список аргументов
      */
     @Override
     public final void execute(CommandSender sender, String[] args) {
