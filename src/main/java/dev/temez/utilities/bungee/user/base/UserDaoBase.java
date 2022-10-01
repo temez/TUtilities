@@ -1,6 +1,7 @@
 package dev.temez.utilities.bungee.user.base;
 
 import dev.temez.utilities.shared.mysql.MySQL;
+import dev.temez.utilities.shared.base.UserBase;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

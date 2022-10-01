@@ -2,6 +2,7 @@ package dev.temez.utilities.bungee.user.base;
 
 import dev.temez.utilities.shared.exception.UserAlreadyLoadedException;
 import dev.temez.utilities.shared.exception.UserNotLoadedException;
+import dev.temez.utilities.shared.base.UserBase;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
