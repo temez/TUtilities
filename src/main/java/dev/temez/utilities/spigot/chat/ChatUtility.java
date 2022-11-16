@@ -13,6 +13,10 @@ public class ChatUtility {
 
     private final String prefix;
 
+    public ChatUtility(){
+        this.prefix = "";
+    }
+
     /**
      * Отправляет цветное сообщение с префиксом игроку
      *
@@ -36,7 +40,7 @@ public class ChatUtility {
     }
 
     /**
-     * Отправляет ошибку с префиксом игроку
+     * Отправляет цветное сообщение игроку
      *
      * @param player  обьект игрока
      * @param message сообщение
@@ -44,6 +48,17 @@ public class ChatUtility {
      */
     public void sendPrefixedError(Player player, String message){
         sendPrefixedMessage(player, "&#fcb1a7" + message);
+    }
+
+    /**
+     * Отправляет цветное сообщение игроку
+     *
+     * @param player  обьект игрока
+     * @param message сообщение
+     * @since 0.1.1
+     */
+    public void sendPrefixedSuccess(Player player, String message){
+        sendPrefixedMessage(player, "&#a7fcab" + message);
     }
 
     /**
