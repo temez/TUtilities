@@ -30,6 +30,13 @@ public class ReflectConfiguration<T> {
     T configuration;
     final FileConfiguration fileConfiguration;
 
+    /**
+     * На основе полей класса парсит файл конфигурации и загружает из него значения
+     *
+     * @return
+     * @throws NoSuchConfigurationSection
+     * @throws IncomparableFieldType
+     */
     @SneakyThrows({InstantiationException.class, IllegalAccessException.class})
     public ReflectConfiguration<T> parse() throws NoSuchConfigurationSection, IncomparableFieldType {
         configuration = (T) configuration.getClass().newInstance();

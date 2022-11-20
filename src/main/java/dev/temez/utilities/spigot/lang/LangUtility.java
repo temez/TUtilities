@@ -12,10 +12,22 @@ import org.bukkit.potion.PotionEffectType;
 @UtilityClass
 public class LangUtility {
 
+    /**
+     * Получает перевод из файла локализации
+     *
+     * @param itemStack
+     * @return
+     */
     public String translate(ItemStack itemStack) {
         return LanguageHelper.getItemName(itemStack, "ru_ru");
     }
 
+    /**
+     * Получает перевод из файла локализации
+     *
+     * @param effectType
+     * @return
+     */
     public String translate(PotionEffectType effectType) {
         return LanguageHelper.getPotionEffectName(effectType, "ru_ru");
     }
