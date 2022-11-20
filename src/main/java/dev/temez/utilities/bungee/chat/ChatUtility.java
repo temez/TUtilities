@@ -11,7 +11,7 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
  */
 @RequiredArgsConstructor
 public class ChatUtility {
-    private final String prefix;
+    protected final String prefix;
 
     /**
      * Отправляет цветное сообщение с префиксом игроку

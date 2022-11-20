@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 @RequiredArgsConstructor
 public class ChatUtility {
 
-    private final String prefix;
+    protected final String prefix;
 
     public ChatUtility(){
         this.prefix = "";

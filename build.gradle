@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'me.temez'
-version = '0.1.1'
+version = '0.1.2'
 
 repositories {
     mavenCentral()
@@ -41,6 +41,8 @@ dependencies {
     compileOnly 'com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.9'
     compileOnly fileTree(dir: "serverJars", includes: ['*.jar'])
     compileOnly 'org.apache.commons:commons-lang3:3.12.0'
+    compileOnly 'org.reflections:reflections:0.9.5-RC2'
+    packToJar 'org.reflections:reflections:0.9.5-RC2'
     packToJar 'org.apache.commons:commons-lang3:3.12.0'
     packToJar 'com.samjakob:SpiGUI:1.2.3'
 
@@ -60,9 +62,11 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+
 }
 
 jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from {
         configurations.packToJar.collect { it.isDirectory() ? it : zipTree(it) }
     }

@@ -39,7 +39,6 @@ public class ConfigLocation {
                 configurationSection.getString("world"),
                 configurationSection.getDouble("yaw"),
                 configurationSection.getDouble("pitch"));
-
     }
 
     public Location getBukkitLocation() {
