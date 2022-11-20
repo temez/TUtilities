@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
-import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.lang.reflect.Field;
@@ -42,9 +41,16 @@ public class ReflectConfiguration<T> {
         configuration = (T) configuration.getClass().newInstance();
         List<Field> fields = Arrays.stream(configuration.getClass().getDeclaredFields()).toList();
         for (Field field : fields) {
-            String pathString = field.getName();
+            String pathString = "";
             ConfigurationPath pathAnnotation = field.getAnnotation(ConfigurationPath.class);
-            if (pathAnnotation != null) pathString = pathAnnotation.path() + "." + pathString;
+            if (pathAnnotation != null) {
+                pathString = pathAnnotation.path() + ".";
+                if (pathAnnotation.key().length() != 0) {
+                    pathString += pathAnnotation.key();
+                } else {
+                    pathString += field.getName();
+                }
+            }
             if (!fileConfiguration.isSet(pathString)) {
                 throw new NoSuchConfigurationSection(field.getName(), fileConfiguration.getName());
             }
