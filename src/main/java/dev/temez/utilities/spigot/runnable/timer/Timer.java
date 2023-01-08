@@ -1,6 +1,6 @@
 package dev.temez.utilities.spigot.runnable.timer;
 
-import dev.temez.utilities.spigot.runnable.AsyncRepeatingTask;
+import dev.temez.utilities.spigot.runnable.SyncRepeatingTask;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class AsyncCooldownedTimer {
+public class Timer {
 
     final JavaPlugin plugin;
     final UUID timerId;
@@ -26,14 +26,13 @@ public class AsyncCooldownedTimer {
 
     public void run(){
         timeLeft = time;
-        new AsyncRepeatingTask(plugin, 0, 20) {
+        new SyncRepeatingTask(plugin, 0, 20) {
             @Override
             public void run() {
                 timeLeft -= 20;
                 if(timeLeft <= 0){
                     cancel();
                     Bukkit.getPluginManager().callEvent(new TimerEvent(timerId));
-                    return;
                 }
             }
         };

@@ -8,7 +8,10 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.net.Socket;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @author temez
@@ -55,7 +58,33 @@ public class BungeeUtility implements PluginMessageListener {
         p.sendPluginMessage(plugin, "BungeeCord", byteArrayOutputStream.toByteArray());
     }
 
+    public CompletableFuture<ServerFullness> getServerFullnessAsync(String address, int port) {
+        return CompletableFuture.completedFuture(getServerFullness(address, port));
+    }
+
+    public ServerFullness getServerFullness(String address, int port) {
+        try (Socket socket = new Socket(address, port);
+             DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+             DataInputStream input = new DataInputStream(socket.getInputStream())) {
+            socket.setSoTimeout(50);
+            output.write(0xFE);
+            StringBuilder result = new StringBuilder();
+            int next;
+            while ((next = input.read()) != -1) {
+                if (next != 0 && next != 16 && next != 255 && next != 23 && next != 24) {
+                    result.append((char) next);
+                }
+            }
+            String[] data = result.toString().split("§");
+            return new ServerFullness(Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+        } catch (Exception exception) {
+            System.out.println(exception);
+            return new ServerFullness(0, 0);
+        }
+    }
+
     @Override
+    @SneakyThrows
     public void onPluginMessageReceived(@NotNull String channel, @NotNull Player player, @NotNull byte[] message) {
     }
 }

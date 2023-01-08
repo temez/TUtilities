@@ -1,4 +1,4 @@
-package dev.temez.utilities.shared.base;
+package dev.temez.utilities.spigot.storage;
 
 import lombok.AccessLevel;
 import lombok.Getter;

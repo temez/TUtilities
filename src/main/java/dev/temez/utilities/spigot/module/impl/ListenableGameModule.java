@@ -23,4 +23,9 @@ public abstract class ListenableGameModule<T extends JavaPlugin> implements Game
     public void enable(){
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
+
+    @Override
+    public void disable() {
+
+    }
 }

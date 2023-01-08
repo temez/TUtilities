@@ -6,8 +6,6 @@ package dev.temez.utilities.spigot.module;
  */
 public interface GameModule {
 
-    int isEnabled();
-
     void enable();
 
     void disable();

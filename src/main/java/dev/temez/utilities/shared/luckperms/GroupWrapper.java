@@ -1,4 +1,4 @@
-package dev.temez.utilities.shared.user;
+package dev.temez.utilities.shared.luckperms;
 
 import dev.temez.utilities.shared.exception.UndefinedGroupException;
 import lombok.AccessLevel;
@@ -20,7 +20,7 @@ import java.util.UUID;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @Getter
 @RequiredArgsConstructor
-public class LPGroupWrapper {
+public class GroupWrapper {
 
     String display;
     String prefix;
@@ -33,9 +33,9 @@ public class LPGroupWrapper {
      * @param uuid uuid игрока
      * @since 0.1.1
      */
-    public static LPGroupWrapper get(UUID uuid) throws UndefinedGroupException {
+    public static GroupWrapper get(UUID uuid) throws UndefinedGroupException {
         Group group = LuckPermsProvider.get().getGroupManager().getGroup(Objects.requireNonNull(LuckPermsProvider.get().getUserManager().getUser(uuid)).getPrimaryGroup());
         if (group == null) throw new UndefinedGroupException();
-        return new LPGroupWrapper(group.getDisplayName(), group.getCachedData().getMetaData().getPrefix(), group.getCachedData().getMetaData().getSuffix(), group.getWeight().getAsInt());
+        return new GroupWrapper(group.getDisplayName(), group.getCachedData().getMetaData().getPrefix(), group.getCachedData().getMetaData().getSuffix(), group.getWeight().getAsInt());
     }
 }

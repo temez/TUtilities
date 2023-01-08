@@ -23,7 +23,7 @@ import java.util.List;
  */
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PROTECTED)
-public class ReflectConfiguration<T> {
+public class ReflectConfigurationParser<T> {
 
     @Getter
     T configuration;
@@ -37,7 +37,7 @@ public class ReflectConfiguration<T> {
      * @throws IncomparableFieldType
      */
     @SneakyThrows({InstantiationException.class, IllegalAccessException.class})
-    public ReflectConfiguration<T> parse() throws NoSuchConfigurationSection, IncomparableFieldType {
+    public ReflectConfigurationParser<T> parse() throws NoSuchConfigurationSection, IncomparableFieldType {
         configuration = (T) configuration.getClass().newInstance();
         List<Field> fields = Arrays.stream(configuration.getClass().getDeclaredFields()).toList();
         for (Field field : fields) {
@@ -61,6 +61,7 @@ public class ReflectConfiguration<T> {
                     continue;
                 }
                 field.set(configuration, ConfigLocation.parse(fileConfiguration.getConfigurationSection(pathString)).getBukkitLocation());
+                continue;
             }
             if (field.getType().isAssignableFrom(Integer.class)) {
                 field.set(configuration, fileConfiguration.getInt(pathString));

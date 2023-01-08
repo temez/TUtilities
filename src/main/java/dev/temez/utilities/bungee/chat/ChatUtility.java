@@ -1,7 +1,9 @@
 package dev.temez.utilities.bungee.chat;
 
 import dev.temez.utilities.shared.TextUtility;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
@@ -10,8 +12,9 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
  * @since 0.1
  */
 @RequiredArgsConstructor
+@FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
 public class ChatUtility {
-    protected final String prefix;
+    String prefix;
 
     /**
      * Отправляет цветное сообщение с префиксом игроку
